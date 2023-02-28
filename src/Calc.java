@@ -220,6 +220,13 @@ public class Calc {
 		JButton bt_bC = new JButton("\uF0E7");
 		bt_bC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String backSpace = null;
+				if (textField.getText().length()>0) {
+					StringBuilder str = new StringBuilder(textField.getText());
+					str.deleteCharAt(textField.getText().length()-1);
+					backSpace = str.toString();
+					textField.setText(backSpace);
+				}
 			}
 		});
 		bt_bC.setFont(new Font("Wingdings", Font.BOLD, 18));
