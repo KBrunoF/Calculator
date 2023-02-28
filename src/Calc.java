@@ -43,7 +43,7 @@ public class Calc {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 331, 460);
+		frame.setBounds(100, 100, 331, 459);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -64,7 +64,7 @@ public class Calc {
 			}
 		});
 		bt_7.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_7.setBounds(10, 97, 65, 54);
+		bt_7.setBounds(10, 162, 65, 54);
 		frame.getContentPane().add(bt_7);
 		
 		JButton bt_8 = new JButton("8");
@@ -75,7 +75,7 @@ public class Calc {
 			}
 		});
 		bt_8.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_8.setBounds(85, 97, 65, 54);
+		bt_8.setBounds(85, 162, 65, 54);
 		frame.getContentPane().add(bt_8);
 		
 		JButton bt_9 = new JButton("9");
@@ -86,7 +86,7 @@ public class Calc {
 			}
 		});
 		bt_9.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_9.setBounds(160, 97, 65, 54);
+		bt_9.setBounds(160, 162, 65, 54);
 		frame.getContentPane().add(bt_9);
 		
 		JButton btnNewButton_3 = new JButton("/");
@@ -102,7 +102,7 @@ public class Calc {
 			}
 		});
 		bt_4.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_4.setBounds(10, 162, 65, 54);
+		bt_4.setBounds(10, 227, 65, 54);
 		frame.getContentPane().add(bt_4);
 		
 		JButton bt_5 = new JButton("5");
@@ -113,7 +113,7 @@ public class Calc {
 			}
 		});
 		bt_5.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_5.setBounds(85, 162, 65, 54);
+		bt_5.setBounds(85, 227, 65, 54);
 		frame.getContentPane().add(bt_5);
 		
 		JButton bt_6 = new JButton("6");
@@ -124,7 +124,7 @@ public class Calc {
 			}
 		});
 		bt_6.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_6.setBounds(160, 162, 65, 54);
+		bt_6.setBounds(160, 227, 65, 54);
 		frame.getContentPane().add(bt_6);
 		
 		JButton bt_2 = new JButton("2");
@@ -135,7 +135,7 @@ public class Calc {
 			}
 		});
 		bt_2.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_2.setBounds(85, 227, 65, 54);
+		bt_2.setBounds(85, 292, 65, 54);
 		frame.getContentPane().add(bt_2);
 		
 		JButton bt_1 = new JButton("1");
@@ -146,7 +146,7 @@ public class Calc {
 			}
 		});
 		bt_1.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_1.setBounds(10, 227, 65, 54);
+		bt_1.setBounds(10, 292, 65, 54);
 		frame.getContentPane().add(bt_1);
 		
 		JButton btnX = new JButton("X");
@@ -162,7 +162,7 @@ public class Calc {
 			}
 		});
 		bt_3.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_3.setBounds(160, 227, 65, 54);
+		bt_3.setBounds(160, 292, 65, 54);
 		frame.getContentPane().add(bt_3);
 		
 		JButton btnNewButton_11 = new JButton("-");
@@ -178,7 +178,7 @@ public class Calc {
 			}
 		});
 		bt_0.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_0.setBounds(10, 292, 140, 54);
+		bt_0.setBounds(85, 357, 65, 54);
 		frame.getContentPane().add(bt_0);
 		
 		JButton btnNewButton_15 = new JButton("+");
@@ -187,13 +187,18 @@ public class Calc {
 		frame.getContentPane().add(btnNewButton_15);
 		
 		JButton bt_Clear = new JButton("C");
+		bt_Clear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText(null);
+			}
+		});
 		bt_Clear.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_Clear.setBounds(10, 357, 65, 54);
+		bt_Clear.setBounds(85, 97, 65, 54);
 		frame.getContentPane().add(bt_Clear);
 		
 		JButton bt_result = new JButton("=");
 		bt_result.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_result.setBounds(85, 357, 220, 54);
+		bt_result.setBounds(160, 357, 145, 54);
 		frame.getContentPane().add(bt_result);
 		
 		JButton bt_dot = new JButton(".");
@@ -204,7 +209,21 @@ public class Calc {
 			}
 		});
 		bt_dot.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_dot.setBounds(160, 292, 65, 54);
+		bt_dot.setBounds(10, 357, 65, 54);
 		frame.getContentPane().add(bt_dot);
+		
+		JButton bt_clearAll = new JButton("AC");
+		bt_clearAll.setFont(new Font("Tahoma", Font.BOLD, 18));
+		bt_clearAll.setBounds(10, 97, 65, 54);
+		frame.getContentPane().add(bt_clearAll);
+		
+		JButton bt_bC = new JButton("\uF0E7");
+		bt_bC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		bt_bC.setFont(new Font("Wingdings", Font.BOLD, 18));
+		bt_bC.setBounds(160, 97, 65, 54);
+		frame.getContentPane().add(bt_bC);
 	}
 }
