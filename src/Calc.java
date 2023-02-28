@@ -178,7 +178,7 @@ public class Calc {
 			}
 		});
 		bt_0.setFont(new Font("Tahoma", Font.BOLD, 18));
-		bt_0.setBounds(10, 292, 215, 54);
+		bt_0.setBounds(10, 292, 140, 54);
 		frame.getContentPane().add(bt_0);
 		
 		JButton btnNewButton_15 = new JButton("+");
@@ -195,5 +195,16 @@ public class Calc {
 		bt_result.setFont(new Font("Tahoma", Font.BOLD, 18));
 		bt_result.setBounds(85, 357, 220, 54);
 		frame.getContentPane().add(bt_result);
+		
+		JButton bt_dot = new JButton(".");
+		bt_dot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = textField.getText() + bt_dot.getText();
+				textField.setText(number);
+			}
+		});
+		bt_dot.setFont(new Font("Tahoma", Font.BOLD, 18));
+		bt_dot.setBounds(160, 292, 65, 54);
+		frame.getContentPane().add(bt_dot);
 	}
 }
