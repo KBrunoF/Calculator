@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
@@ -15,10 +16,16 @@ public class Calc {
 	private JFrame frame;
 	private JTextField textField;
 
+	double firstNb;
+	double secondNb;
+	double result;
+	String operation;
+
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -90,6 +97,13 @@ public class Calc {
 		frame.getContentPane().add(bt_9);
 		
 		JButton btnNewButton_3 = new JButton("/");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				operation = "/";
+				firstNb = Double.parseDouble(textField.getText());
+				textField.setText(null);
+			}
+		});
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton_3.setBounds(240, 97, 65, 54);
 		frame.getContentPane().add(btnNewButton_3);
@@ -150,6 +164,13 @@ public class Calc {
 		frame.getContentPane().add(bt_1);
 		
 		JButton btnX = new JButton("X");
+		btnX.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				operation = "X";
+				firstNb = Double.parseDouble(textField.getText());
+				textField.setText(null);
+			}
+		});
 		btnX.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnX.setBounds(240, 162, 65, 54);
 		frame.getContentPane().add(btnX);
@@ -166,6 +187,13 @@ public class Calc {
 		frame.getContentPane().add(bt_3);
 		
 		JButton btnNewButton_11 = new JButton("-");
+		btnNewButton_11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				operation = "-";
+				firstNb = Double.parseDouble(textField.getText());
+				textField.setText(null);
+			}
+		});
 		btnNewButton_11.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton_11.setBounds(240, 227, 65, 54);
 		frame.getContentPane().add(btnNewButton_11);
@@ -182,6 +210,13 @@ public class Calc {
 		frame.getContentPane().add(bt_0);
 		
 		JButton btnNewButton_15 = new JButton("+");
+		btnNewButton_15.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				operation = "+";
+				firstNb = Double.parseDouble(textField.getText());
+				textField.setText(null);
+			}
+		});
 		btnNewButton_15.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton_15.setBounds(240, 292, 65, 54);
 		frame.getContentPane().add(btnNewButton_15);
@@ -197,6 +232,29 @@ public class Calc {
 		frame.getContentPane().add(bt_Clear);
 		
 		JButton bt_result = new JButton("=");
+		bt_result.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (operation != "" || textField.getText().length() > 0 ) {
+					secondNb = Double.parseDouble(textField.getText());
+					if (operation == "+" ) {
+						result = firstNb + secondNb;
+					}
+					else if(operation == "-"){
+						result = firstNb - secondNb;
+					}
+					else if (operation == "X"){
+						result = firstNb * secondNb;
+					}
+					else {
+						result = firstNb + secondNb;
+					}
+					textField.setText(String.format("%.2f", result));
+					firstNb = 0;
+					secondNb = 0;
+					operation = "";
+				}
+			}
+		});
 		bt_result.setFont(new Font("Tahoma", Font.BOLD, 18));
 		bt_result.setBounds(160, 357, 145, 54);
 		frame.getContentPane().add(bt_result);
@@ -213,6 +271,14 @@ public class Calc {
 		frame.getContentPane().add(bt_dot);
 		
 		JButton bt_clearAll = new JButton("AC");
+		bt_clearAll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText(null);
+				firstNb = 0;
+				secondNb = 0;
+				operation = "";
+			}
+		});
 		bt_clearAll.setFont(new Font("Tahoma", Font.BOLD, 18));
 		bt_clearAll.setBounds(10, 97, 65, 54);
 		frame.getContentPane().add(bt_clearAll);
