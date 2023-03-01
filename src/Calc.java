@@ -1,14 +1,14 @@
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class Calc {
@@ -254,7 +254,10 @@ public class Calc {
 					else {
 						result = firstNb + secondNb;
 					}
-					textField.setText(String.format("%.2f", result));
+					
+					if (result > (int)result) textField.setText(String.format("%.2f", result));
+					else textField.setText(String.format("%.0f", result));
+					
 					firstNb = 0;
 					secondNb = 0;
 					operation = "";
