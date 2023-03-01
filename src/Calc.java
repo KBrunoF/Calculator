@@ -20,6 +20,7 @@ public class Calc {
 	double secondNb;
 	double result;
 	String operation;
+	boolean asDot = false;
 
 	/**
 	 * Launch the application.
@@ -102,6 +103,7 @@ public class Calc {
 				operation = "/";
 				firstNb = Double.parseDouble(textField.getText());
 				textField.setText(null);
+				asDot = false;
 			}
 		});
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -169,6 +171,7 @@ public class Calc {
 				operation = "X";
 				firstNb = Double.parseDouble(textField.getText());
 				textField.setText(null);
+				asDot = false;
 			}
 		});
 		btnX.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -192,6 +195,7 @@ public class Calc {
 				operation = "-";
 				firstNb = Double.parseDouble(textField.getText());
 				textField.setText(null);
+				asDot = false;
 			}
 		});
 		btnNewButton_11.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -215,6 +219,7 @@ public class Calc {
 				operation = "+";
 				firstNb = Double.parseDouble(textField.getText());
 				textField.setText(null);
+				asDot = false;
 			}
 		});
 		btnNewButton_15.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -225,6 +230,7 @@ public class Calc {
 		bt_Clear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(null);
+				asDot = false;
 			}
 		});
 		bt_Clear.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -252,6 +258,7 @@ public class Calc {
 					firstNb = 0;
 					secondNb = 0;
 					operation = "";
+					asDot = false;
 				}
 			}
 		});
@@ -262,8 +269,11 @@ public class Calc {
 		JButton bt_dot = new JButton(".");
 		bt_dot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String number = textField.getText() + bt_dot.getText();
-				textField.setText(number);
+				if (asDot != true) {
+					String number = textField.getText() + bt_dot.getText();
+					textField.setText(number);
+					asDot = true;
+				}
 			}
 		});
 		bt_dot.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -277,6 +287,7 @@ public class Calc {
 				firstNb = 0;
 				secondNb = 0;
 				operation = "";
+				asDot = false;
 			}
 		});
 		bt_clearAll.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -289,6 +300,9 @@ public class Calc {
 				String backSpace = null;
 				if (textField.getText().length()>0) {
 					StringBuilder str = new StringBuilder(textField.getText());
+					if (str.charAt(textField.getText().length()-1) == '.') {
+						asDot = false;
+					}
 					str.deleteCharAt(textField.getText().length()-1);
 					backSpace = str.toString();
 					textField.setText(backSpace);
